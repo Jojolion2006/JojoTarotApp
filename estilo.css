@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&display=swap');
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Eczar', serif;
+}
+
+body {
+    background-attachment: fixed;
+    background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+        url("images/mesa.jpg") no-repeat center center;
+
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.wrapper{
+    perspective: 1000px;
+    counter-reset: cards;
+    --cards: 21;
+    --curvature: 72deg;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transform: translateY(0px);
+    list-style: none;
+}
+.wrapper li {
+    transform-style: preserve-3d;
+}
+
+.wrapper>* {
+    background-color: transparent;
+--curve: calc(var(--curvature) * ((var(--index) - (var(--cards) - 1) / 2) / var(--cards)));
+position: absolute;
+    counter-increment: cards;
+    flex: 0 0 auto;
+    width: 20vw;
+    max-width: 25vh;
+aspect-ratio: 2/3;
+transform-origin: 50% 100%;
+transform: rotate(var(--curve)) translateY(-100%) translateZ(calc(var(--index) * 1px));
+transition: all 0.3s;
+cursor: pointer;
+font-size: 11vmin;
+transform-style: preserve-3d;
+border-radius: 4px;
+}
+
+.wrapper li {
+    background: transparent;
+}
+
+.wrapper>*:nth-child(1) {
+    --index: 0;
+}
+
+.wrapper>*:nth-child(2) {
+    --index: 1;
+}
+
+.wrapper>*:nth-child(3) {
+    --index: 2;
+}
+
+.wrapper>*:nth-child(4) {
+    --index: 3;
+}
+
+.wrapper>*:nth-child(5) {
+    --index: 4;
+}
+
+.wrapper>*:nth-child(6) {
+    --index: 5;
+}
+
+.wrapper>*:nth-child(7) {
+    --index: 6;
+}
+
+.wrapper>*:nth-child(8) {
+    --index: 7;
+}
+
+.wrapper>*:nth-child(9) {
+    --index: 8;
+}
+
+.wrapper>*:nth-child(10) {
+    --index: 9;
+}
+
+.wrapper>*:nth-child(11) {
+    --index: 10;
+}
+
+.wrapper>*:nth-child(12) {
+    --index: 11;
+}
+
+.wrapper>*:nth-child(13) {
+    --index: 12;
+}
+
+.wrapper>*:nth-child(14) {
+    --index: 13;
+}
+
+.wrapper>*:nth-child(15) {
+    --index: 14;
+}
+
+.wrapper>*:nth-child(16) {
+    --index: 15;
+}
+
+.wrapper>*:nth-child(17) {
+    --index: 16;
+}
+
+.wrapper>*:nth-child(18) {
+    --index: 17;
+}
+
+.wrapper>*:nth-child(19) {
+    --index: 18;
+}
+
+.wrapper>*:nth-child(20) {
+    --index: 19;
+}
+
+.wrapper>*:nth-child(21) {
+    --index: 20;
+}
+
+.wrapper>*:nth-child(22) {
+    --index: 21;
+}
+
+/* .wrapper > *::before {
+    content: counter(cards);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    background-color: #F8F1E5;
+    transition: all 0.3s;
+    border-radius: 4px;
+    text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    border: 1px solid grey;
+}
+
+.wrapper > *:hover {
+   animation: hoverEffect 1s ease-in-out infinite alternate forwards;
+}
+
+.wrapper > *:hover::before {
+    transform: translateY(-42.5%) rotate(calc(var(--curve) * -1)) scale(1.2);
+    transition-duration: 0.2s, 0s;
+    translate: 0px 0px 1px;
+    border: 1px solid grey;
+    border-radius: 4px;
+} */
+
+@keyframes hoverEffect {
+    to {
+        translate: 0px 12px;
+    }
+}
+
+.card {
+    transform: translateZ(0);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+/* Frente */
+.front {
+     background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Parte trasera (diseño tipo tarot) */
+.back {
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(180deg);
+    border-radius: 4px;
+}
+
+/* Flip */
+.wrapper li.flipped .card {
+    transform: rotateY(180deg);
+}
+
+.card, .front, .back {
+    transform: translateZ(0.1px);
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.wrapper li.flipped .card {
+    transform: rotateY(180deg);
+}
+
+.wrapper li {
+    z-index: 1;
+}
+
+
+.wrapper li.flipped {
+    z-index: 2000;
+}
+
+
+.wrapper li {
+    transform-style: preserve-3d;
+    isolation: isolate;
+}
+
+    .card {
+        transform: translateZ(0);
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    will-change: transform;
+}
+
+.front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+     display: block;
+}
+
+.wrapper.selected li {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.wrapper.selected li.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 9999;
+}
+.wrapper.selected li.active {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.3) !important;
+    z-index: 9999;
+}
+
+.wrapper:not(.selected) li:hover {
+    z-index: 9999;
+    transform: rotate(var(--curve)) translateY(-110%) scale(1.05) translateZ(50px);
+}
+
+.wrapper.selected li {
+    pointer-events: none;
+}
+
+.wrapper.selected li.active {
+    pointer-events: auto;
+}
+
+
+.wrapper.selected li:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wrapper.selected li.active {
+    will-change: transform;
+}
+
+.titulo {
+    position: absolute;
+    top: 40px;
+    color: #f8f1e5;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#resultado {
+    position: absolute;
+    top: 100px;
+    color: #f8f1e5;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#resultado {
+    position: absolute;
+    top: 100px;
+    color: #f8f1e5;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+#resultado.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.titulo {
+    transition: all 0.5s ease;
+}
+
+.titulo.hide {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+#reroll {
+    position: absolute;
+    top: 160px;
+    padding: 10px 20px;
+    background: #f8f1e5;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+#reroll.show {
+    opacity: 1;
+}
+
+.card {
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
