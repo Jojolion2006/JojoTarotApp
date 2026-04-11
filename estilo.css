@@ -396,6 +396,8 @@ body {
 }
 
 .mano {
+    width: 75%;
+    height:75vh;
   position: absolute;
   top: -200px; 
   opacity: 0;
@@ -403,12 +405,12 @@ body {
 }
 
 .mano-izquierda {
-  left: 25%;
+  left: 75%;
   animation-delay: 0.2s;
 }
 
 .mano-derecha {
-  right: 25%;
+  right: 75%;
   animation-delay: 0.5s;
 }
 
